@@ -45,3 +45,24 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.pdf
+*.bst
+*.eps
+*.jpg
+*.png
+*.log
+paper.blg
+*.bbl
+template.synctex.gz
+*.spl
+*.out
+template.blg
+*.sty
+References/references.bib
+*.gz
+paper.ps
+*.nlo
+paper.dvi
+*.aux
+template.dvi
+*.ps
