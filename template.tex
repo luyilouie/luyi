@@ -333,8 +333,10 @@
 			% 修改图
 			%解释为什么后面误差不等于0； 并且举例子
 		\end{figure*}
+		
 	\section{Combination}
-	The maximum width of welding pool is a combination of far-field and near-field. To cover the middle range of $\frac{\sigma}{\sigma_m}$, the correction of near-field equation is needed.
+	The maximum width of welding pool is a combination of far-field and near-field. To cover the middle range of $\frac{\sigma}{\sigma_m}$, the correction of both equations is needed.
+	\subsection{near-field }
 	\begin{equation}  \label{eq:LvR}
     L=	0.93175-0.06825\tanh\left({-0.6571 \; \ln\dfrac{Ry}{15.926}}\right)-0.0132\sin\left[3{\pi}\tanh\left(0.2485 \; Ry^{0.3718}\right)\right]
 	\end{equation}
@@ -348,23 +350,36 @@
 			\label{fig:A.LvR}
 		\end{figure*}
    The maximum error reaches $0.55\%$. 
-   
-   
-   
+   \subsection{far-field}
+    The maximum width can be written in form of step function, consisting of far-field expression and near-field expression.  However, lines of $y^*_{m,1} and y^*_{m,12}  $ cross. A correction of far-field expression is applied, which is a confinement with the range of $\frac{\sigma^*}{\sigma_m^*}$. It's difficult to calculate the cross points directly, so a back step is took that the point between two cross points is found with any $Ry$.
+    \\
+    When $Ry\leqslant 5\times10^3$, $lin=0.4$ . \\
+    When $Ry > 5\times10^3$, 
+    \begin{align}
+	  \nonumber
+    y^*_{m,1}-y^*_{m,12} &= \sqrt{\frac{2}{e}Ry}+0.5993\left(\frac{\sigma^*}{\sigma_m^*}\right)^2Ry^{\frac{5}{6}}-2.4838\frac{\sigma^*}{\sigma_m^*}\sqrt{\log{\frac{\sigma_m^*}{\sigma^*}}} \; Ry^{\frac{2}{3}}<0 
+    \end{align}
+    When$\frac{\sigma^*}{\sigma_m^*} =Ry^{-\frac{1}{6}} $,the in-equation is satisfied. So:
+    \\
+    \begin{equation}
+    	lin   =  Ry^{-\frac{1}{6}}  \cdot \left(Ry>5\times10^3\right) +0.4\left(Ry \leqslant 5\times10^3\right);   
+    \end{equation}
 	\section{whole plane}
 		\begin{align}  
 		y_m^*\;  & =  MAX\{ \quad y_{m,1}^* \; , \quad  y_{m,2}^* \quad \}
 			\\\nonumber
-		y_{m,1}^*& =\left\{
-				\begin{aligned}
-					& y_{m,point}^*\left(1+P\sigma^{*2}\right)  \qquad 
-					      &\frac{\sigma^*}{\sigma^*_m}   <    \;    lin\\
-				    & 0   &\frac{\sigma^*}{\sigma^*_m}   \geq \;    lin
-				\end{aligned}
-				\right.
+		y_{m,1}^*& = y_{m,point}^*\left(1+P\sigma^{*2}\right) \cdot  \left( \left. \sigma^*  \middle / \sigma^*_m \right.  < lin \right)	 
+	%	\left\{
+	%			\begin{aligned}
+	%				& y_{m,point}^*\left(1+P\sigma^{*2}\right)  \qquad 
+	%				      &\frac{\sigma^*}{\sigma^*_m}   <    \;    lin\\
+	%			    & 0   &\frac{\sigma^*}{\sigma^*_m}   \geq \;    lin
+	%			\end{aligned}
+	%			\right.
 			\\ \nonumber
 		y_{m,2}^*& = K\left[L\left(\sigma^*-\sigma^{*}_m\right)+\sigma^{*}_m 	\right]\sqrt{\ln{\frac{Ry^{*}}{Ry_{min}^{*}(\sigma^{*})}}}
 		\end{align} 
+		
 		The parameters in equations are as follows:
 		\begin{align}
 		\nonumber
@@ -374,7 +389,7 @@
 			P \quad      & =\left[\left( \frac{1}{2Ry^{*2}}\right)^n+  \left( \frac{e}{4Ry^{*}}\right)^n  \right]^{\frac{1}{n}}    
 			\\ \nonumber &\quad \quad \mbox{\mbox{Where}  \quad  n= \; 0.8655}
 			\\  \nonumber 
-			lin \quad      & =0.1\left(Ry^*>5\times10^3\right)+0.4\left(Ry\leqslant5\times10^3\right);   
+			lin \quad      & =  Ry^{-\frac{1}{6}}  \cdot \left(Ry>5\times10^3\right) +0.4\left(Ry \leqslant 5\times10^3\right);   
 			\\ \nonumber
 			K \quad      &=k_0-A*\tanh{\left(B\ln{\frac{Ry}{C}}\right)}
 			\\ \nonumber & \quad \quad \mbox{Where $k_0=\frac{2+\sqrt{2}}{2}$,$A=\frac{2-\sqrt{2}}{2}$,$B=0.3775$,$C=1.0690$.} 
@@ -389,6 +404,7 @@
 			\\ \nonumber
 				       & \quad \quad \mbox{Where $n=-1.9464$}
 		\end{align}
+		
 		The maximum error reaches $5.25\%$.There is a limit that $\frac{\sigma^*}{\sigma_m^*}<98\%$, because when $\frac{\sigma^*}{\sigma_m^*}$ tends to $1$, $y_m^*$ tends to $0$,  the approximation (means that it's not accurate) of $Ry_{min}^* , \sigma_m^*$ leads to a large relative error. If the high-precision value is obtained， these equations still work.
 		\begin{figure}
 				\centering	
